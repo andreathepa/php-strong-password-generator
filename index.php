@@ -1,34 +1,23 @@
 <?php
+include __DIR__ . "/partials/template/function.php";
 
-    include __DIR__."/partials/template/function.php";
+function randomPassword() {
+    if (isset($_GET['password'])) {
+        $passlength = intval($_GET['password']);
+        $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        $pass = array();
+        $alphaLength = strlen($alphabet) - 1;
 
-    // $filteredHotels = $hotels;
+        for ($i = 0; $i < $passlength; $i++) {
+            $n = rand(0, $alphaLength);
+            $pass[] = $alphabet[$n];
+        }
 
-    // if (isset($_GET['parking'])){
+        return implode($pass);
+    }
 
-    //     $array= [];
-    //     if($_GET['parking'] != ''){
-    //         foreach($hotels as $hotel){
-    //             if(filter_var($_GET ['parking'], FILTER_VALIDATE_BOOLEAN) === $hotel['parking']){
-    //             $array [] = $hotel;
-    //             }
-    //         }
-
-    //         $filteredHotels = $array;
-    //     }
-    //     else{
-    //         $filteredHotels = $hotels;
-    //     }
-
-
-
-    // }
-
-    echo 'hello world';
-
-    echo $ciao;
-
-
+    return ''; // Ritorna una stringa vuota se il parametro password non è stato inviato
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,14 +36,11 @@
         <div class="row">
             <div class="col">
                 <div class="content">
-                    <form action="index.php" method="POST">
-
+                    <form action="index.php" method="GET">
                         <label for="password" class="control-label">Password generator</label>
-
-                        <input type="text" name="password" required>
-
+                        <input type="text" name="password">
                         <button class="btn btn-sn btn-primary" type="submit">Genera password</button>
-
+                        <div><?php echo randomPassword(); ?></div>
                     </form>
                 </div>
             </div>
