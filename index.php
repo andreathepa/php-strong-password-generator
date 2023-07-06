@@ -14,21 +14,38 @@ include __DIR__ . "/partials/template/function.php";
     <link rel="stylesheet" href="./css/style.css">
     <title>PHP PASSWORD</title>
 </head>
-<body>
+<body class="bg-primary">
+    <header>
+        <div class="container mt-5 mb-5 text-center text-white">
+            <div class="row">
+                <div class="col">
+                    <h1>Strong Password Generator</h1>
+                    <h3>Genera una password sicura</h3>
 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="content">
-                    <form action="index.php" method="GET">
-                        <label for="password" class="control-label">Password generator</label>
-                        <input type="text" name="password">
-                        <button class="btn btn-sn btn-primary" type="submit">Genera password</button>
-                        <div><?php echo randomPassword(); ?></div>
-                    </form>
                 </div>
             </div>
         </div>
-    </div>
+    </header>
+
+    <main>
+        <div class="container bg-white p-3 rounded">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <div class="content">
+                        <form action="index.php" method="GET">
+                            <label for="password" class="control-label mb-2">Inserire lunghezza password desiderata:</label>
+                            <input type="text" name="password" class="form-control">
+                            <div class="mt-3">
+                                <button class="btn btn-sn btn-primary" type="submit">Genera password</button>
+    
+                            </div>
+                            <div class="opacity-50 rounded mt-3 p-3 bg-success text-white"><?php echo randomPassword(); ?></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
 </body>
 </html>
